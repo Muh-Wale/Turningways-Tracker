@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api", // proxy to backend
+  baseURL: "https://trackar.onrender.com", // proxy to backend
 });
 
 api.interceptors.request.use((config) => {

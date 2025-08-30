@@ -37,14 +37,14 @@ export default function Users() {
     <div className="p-6">
       <h1 className="text-xl font-bold">Users</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-3 max-w-md mt-4">
+      <form onSubmit={handleSubmit} className="max-w-md mt-4 space-y-3">
         <input
           type="text"
           name="name"
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full p-2 border rounded"
         />
         <input
           type="text"
@@ -52,7 +52,7 @@ export default function Users() {
           placeholder="Phone"
           value={form.phone}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full p-2 border rounded"
         />
         <input
           type="email"
@@ -60,23 +60,23 @@ export default function Users() {
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full p-2 border rounded"
         />
         <select
           name="role"
           value={form.role}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full p-2 border rounded"
         >
           <option value="manager">Manager</option>
           <option value="staff">Staff</option>
         </select>
-        <button className="bg-blue-600 text-white py-2 px-4 rounded">Create User</button>
+        <button className="px-4 py-2 text-white bg-blue-600 rounded">Create User</button>
       </form>
 
       <ul className="mt-6 space-y-2">
         {users.map((u, i) => (
-          <li key={i} className="border p-3 rounded bg-gray-50">
+          <li key={i} className="p-3 border rounded bg-gray-50">
             {u.name} ({u.role}) - {u.phone}
           </li>
         ))}

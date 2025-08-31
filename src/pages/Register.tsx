@@ -33,32 +33,47 @@ export default function Register() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await api.post("/register/", form);
+  e.preventDefault();
+  setLoading(true);
 
-      toast({
-        title: "Registration Successful",
-        description: res.data.message || "Your organization has been registered.",
-      });
+  try {
+    const res = await api.post("/register/", form);
 
-      navigate("/login");
-    } catch (err: any) {
-      const description =
-        err?.response?.data?.message ||
-        err.message ||
-        "Registration failed. Please try again.";
+    toast({
+      title: "Registration Successful",
+      description: res.data.message || "Your organization has been registered.",
+    });
 
-      toast({
-        title: "Registration Failed",
-        description,
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
+    navigate("/login");
+  } catch (err: any) {
+    console.error("Registration error:", err.response?.data || err.message);
+
+    let description = "Registration failed. Please try again.";
+
+    // Handle Django validation errors (form.errors dict)
+    if (err?.response?.status === 400 && err.response?.data) {
+      const errors = err.response.data;
+      if (typeof errors === "object") {
+        description = Object.entries(errors)
+          .map(([field, messages]) => `${field}: ${(messages as string[]).join(", ")}`)
+          .join(" | ");
+      }
+    } else if (err?.response?.data?.message) {
+      // Handle normal error with "message"
+      description = err.response.data.message;
+    } else if (err.message) {
+      description = err.message;
     }
-  };
+
+    toast({
+      title: "Registration Failed",
+      description,
+      variant: "destructive",
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-grey-50 to-white">

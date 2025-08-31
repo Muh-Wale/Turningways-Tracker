@@ -3,7 +3,7 @@ import api from "@/api/http";
 import { useNavigate } from "react-router-dom";
 
 const CreateUser: React.FC = () => {
-  const [form, setForm] = useState({ first_name: "", last_name: "", phone: "", email: "", role: "manager" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", role: "manager" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -31,19 +31,10 @@ const CreateUser: React.FC = () => {
         <h2 className="text-xl font-bold">Create User</h2>
 
         <input
-          name="first_name"
-          value={form.first_name}
+          name="name"
+          value={form.name}
           onChange={handleChange}
-          placeholder="First Name"
-          required
-          className="w-full p-2 border rounded-lg"
-        />
-
-        <input
-          name="last_name"
-          value={form.last_name}
-          onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Full Name"
           required
           className="w-full p-2 border rounded-lg"
         />

@@ -24,8 +24,7 @@ const CheckInOut = () => {
 
   // ✅ Create User form state
   const [userForm, setUserForm] = useState({
-    first_name: "",
-    last_name: "",
+    name: "",
     phone: "",
     email: "",
     role: "manager",
@@ -64,7 +63,7 @@ const CheckInOut = () => {
     try {
       await api.post("/users/create/", userForm);
       toast({ title: "Success", description: "User created successfully 🎉" });
-      setUserForm({ first_name: "", last_name: "", phone: "", email: "", role: "manager" });
+      setUserForm({ name: "", phone: "", email: "", role: "manager" });
     } catch (error: any) {
       toast({
         title: "Error",
@@ -114,7 +113,7 @@ const CheckInOut = () => {
               <Button
                 variant={activeTab === "create" ? "default" : "ghost"}
                 onClick={() => setActiveTab("create")}
-                className={`${activeTab === "create" ? "bg-gradient-primary text-primary-foreground" : ""} px-8 py-3 rounded-lg font-medium`}
+                className={`${activeTab === "create" ? "bg-primary text-primary-foreground" : ""} px-8 py-3 rounded-lg font-medium`}
               >
                 <UserPlus className="w-4 h-4 mr-2" />
                 Create User
@@ -173,15 +172,16 @@ const CheckInOut = () => {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleUserSubmit} className="space-y-6">
-                  <div className="form-grid-2">
-                    <div>
-                      <Label htmlFor="first_name">First Name</Label>
-                      <Input id="first_name" name="first_name" value={userForm.first_name} onChange={handleUserChange} required className="h-12 focus-enhanced" />
-                    </div>
-                    <div>
-                      <Label htmlFor="last_name">Last Name</Label>
-                      <Input id="last_name" name="last_name" value={userForm.last_name} onChange={handleUserChange} required className="h-12 focus-enhanced" />
-                    </div>
+                  <div>
+                    <Label htmlFor="name">Full Name</Label>
+                    <input
+                      name="name"
+                      value={userForm.name}
+                      onChange={handleUserChange}
+                      placeholder="Full Name"
+                      required
+                      className="w-full p-2 border rounded-lg"
+                    />
                   </div>
                   <div>
                     <Label htmlFor="phone">Phone</Label>

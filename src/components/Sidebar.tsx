@@ -8,9 +8,10 @@ const Sidebar = () => {
     // const { logout } = useAuth();
 
     const links = [
-        { name: "Access Control", path: "/dashboard/access" },
+        { name: "Control Stats", path: "/dashboard/access" },
         { name: "Users", path: "/dashboard/users" },
         { name: "Logs", path: "/dashboard/logs" },
+        { name: "Access Control", path: "/usercheck" }
     ];
 
     return (

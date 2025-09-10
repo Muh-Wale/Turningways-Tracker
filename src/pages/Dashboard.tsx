@@ -13,7 +13,7 @@ const Dashboard = () => {
       {/* Content */}
       <main className="flex-1 p-6">
         <Routes>
-          <Route path="/" element={<Navigate to="users" />} />
+          <Route path="/" element={<Navigate to="access" />} />
           <Route path="users" element={<UsersPage />} />
           <Route path="access" element={<AccessControlPage />} />
           <Route path="logs" element={<Logs/>} />

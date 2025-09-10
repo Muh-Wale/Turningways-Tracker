@@ -81,10 +81,10 @@ const CheckInOut = () => {
       <div className="container px-4 py-8 mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">
-          <Link to="/welcome" className="group">
+          <Link to="/dashboard" className="group">
             <Button variant="outline" size="sm" className="interactive-hover">
               <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-              Back to Home
+              Back to Dashboard
             </Button>
           </Link>
           <div className="flex items-center space-x-3">

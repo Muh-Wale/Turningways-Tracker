@@ -83,12 +83,12 @@ const Index = () => {
                                     </Button>
                                 </Link>
                             )} */}
-                            <Link to="/login" className="w-full sm:w-auto">
+                            {!isAuthenticated && (<Link to="/login" className="w-full sm:w-auto">
                                 <Button variant="outline" className="flex items-center justify-center w-full sm:w-auto border-grey-300 hover:bg-grey-50 hover:text-primary-500">
                                     <Settings className="w-4 h-4 mr-2" />
                                     <span className="text-sm">Admin Login</span>
                                 </Button>
-                            </Link>
+                            </Link>)}
 
                             {isAdmin && (
                                 <Button

@@ -53,7 +53,7 @@ const CheckInOut = () => {
       });
     } finally {
       setLoading(false);
-      navigate("/welcome"); // Redirect after check-in/out
+       // Redirect after check-in/out
     }
   };
 

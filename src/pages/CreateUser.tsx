@@ -21,7 +21,7 @@ const CreateUser: React.FC = () => {
       alert(error.response?.data?.message || "Error creating user");
     } finally {
       setLoading(false);
-      navigate("/welcome");
+      navigate("/dashboard/"); // Redirect after creation
     }
   };
 

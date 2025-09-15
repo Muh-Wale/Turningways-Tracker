@@ -36,7 +36,7 @@ export default function Login() {
         title: "Login Successful",
         description: "Welcome back!",
       });
-      navigate("/welcome");
+      navigate("/dashboard/"); // Redirect after login
     } catch (err: any) {
       const description =
         err?.response?.data?.message ||
